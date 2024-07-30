@@ -1,0 +1,142 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0": {
+      "FosterFramework/0.1.18-alpha": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Foster.Framework.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/Foster.Framework.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/linux-arm/native/libFosterPlatform.so": {
+            "assetType": "native",
+            "rid": "linux-arm"
+          },
+          "runtimes/linux-arm64/native/libFosterPlatform.so": {
+            "assetType": "native",
+            "rid": "linux-arm64"
+          },
+          "runtimes/linux-x64/native/libFosterPlatform.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/osx/native/libFosterPlatform.dylib": {
+            "assetType": "native",
+            "rid": "osx"
+          },
+          "runtimes/win-x64/native/FosterPlatform.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "FosterFramework/0.1.18-alpha": {
+      "sha512": "DnjlSU3cfqXFWjDIOc6UYdVdJ4AH/IWD7WB7a1mS8F9VjGqYMg3/S23kMFpg9U8v0BISCz1dkJXJxetA7kROPw==",
+      "type": "package",
+      "path": "fosterframework/0.1.18-alpha",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "README.md",
+        "fosterframework.0.1.18-alpha.nupkg.sha512",
+        "fosterframework.nuspec",
+        "lib/net8.0/Foster.Framework.dll",
+        "runtimes/linux-arm/native/libFosterPlatform.so",
+        "runtimes/linux-arm64/native/libFosterPlatform.so",
+        "runtimes/linux-x64/native/libFosterPlatform.so",
+        "runtimes/osx/native/libFosterPlatform.dylib",
+        "runtimes/win-x64/native/FosterPlatform.dll"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net8.0": [
+      "FosterFramework >= 0.1.18-alpha"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Annas\\.nuget\\packages\\": {},
+    "C:\\Users\\Annas\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "M:\\Projects\\Programming\\C#\\Pine\\Pine.csproj",
+      "projectName": "Pine",
+      "projectPath": "M:\\Projects\\Programming\\C#\\Pine\\Pine.csproj",
+      "packagesPath": "C:\\Users\\Annas\\.nuget\\packages\\",
+      "outputPath": "M:\\Projects\\Programming\\C#\\Pine\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Users\\Annas\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder",
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\Annas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Annas\\AppData\\Roaming\\NuGet\\config\\Godot.Offline.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      }
+    },
+    "frameworks": {
+      "net8.0": {
+        "targetAlias": "net8.0",
+        "dependencies": {
+          "FosterFramework": {
+            "target": "Package",
+            "version": "[0.1.18-alpha, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
