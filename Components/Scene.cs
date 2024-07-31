@@ -11,7 +11,6 @@ public abstract class Scene
     /// Get called when the scene is initialized
     /// or when changing scene where this scene is the target of the changing scene proccess
     /// </summary>
-    /// 
     public abstract void Startup();
     
     /// <summary>
