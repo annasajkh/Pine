@@ -24,14 +24,25 @@ public sealed class SpriteAnimator : IUpdateable
     public bool Playing { get; private set; }
 
     /// <summary>
-    /// Determine if
+    /// Determine if the animation is looping
     /// </summary>
     public bool Looping { get; }
+    
+    /// <summary>
+    /// Determine if the animation is played in reverse
+    /// </summary>
     public bool Reversed { get; set; }
-
+    
+    /// <summary>
+    /// The frame index of the animation, this changes more rapidly the higher the FramePerSecond
+    /// </summary>
     public int FrameIndex { get; private set; }
+    
+    /// <summary>
+    /// The sprite sheet that will be use for the animation
+    /// </summary>
     public Sprite Sprite { get; }
-
+    
     private float singleFrameElapsed;
 
     public SpriteAnimator(Sprite sprite, float framePerSecond, uint[] frameIndices, bool looping, bool reversed = false)
@@ -42,17 +53,26 @@ public sealed class SpriteAnimator : IUpdateable
         Looping = looping;
         Sprite = sprite;
     }
-
+    
+    /// <summary>
+    /// Play the animation
+    /// </summary>
     public void Play()
     {
         Playing = true;
     }
-
+    
+    /// <summary>
+    /// Stop the animation
+    /// </summary>
     public void Stop()
     {
         Playing = false;
     }
-
+    
+    /// <summary>
+    /// Update the animation so that it animate duh
+    /// </summary>
     public void Update()
     {
         // Update to the next frame

@@ -6,22 +6,22 @@ namespace Pine.Components;
 public sealed class Timer : IUpdateable
 {
     /// <summary>
-    /// The time the timer have to wait before it timeout
+    /// The time the timer have to wait before it time out
     /// </summary>
     public float WaitTime { get; set; }
 
     /// <summary>
-    /// Whether or not it's only timeout once
+    /// Whether it's only timeout once
     /// </summary>
     public bool Oneshot { get; set; }
     
     /// <summary>
-    /// The time it have left before it timeout
+    /// The time it have left before it time out
     /// </summary>
     public float TimeLeft { get; private set; }
 
     /// <summary>
-    /// Whether or not it's paused
+    /// Whether it's paused
     /// </summary>
     public bool Paused { get; private set; } = true;
 
@@ -33,8 +33,8 @@ public sealed class Timer : IUpdateable
     /// <summary>
     /// The constructor
     /// </summary>
-    /// <param name="waitTime">The time before it timeout (in seconds)</param>
-    /// <param name="oneshot">Whether or not it's only timeout once</param>
+    /// <param name="waitTime">The time before it time out (in seconds)</param>
+    /// <param name="oneshot">Whether it's only timeout once</param>
     public Timer(float waitTime, bool oneshot)
     {
         WaitTime = waitTime;
@@ -58,7 +58,7 @@ public sealed class Timer : IUpdateable
     }
 
     /// <summary>
-    /// Update the timer
+    /// Update the timer so it run duh
     /// </summary>
     public void Update()
     {

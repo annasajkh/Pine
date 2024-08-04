@@ -32,7 +32,7 @@ public abstract class Scene
     /// <summary>
     /// Get called when the scene is shutting down or when changing scenes
     /// where this scene is the one that is being unloaded
-    /// unmanaged resources per scene shouldn't be permanent and should gone when changing scene
+    /// unmanaged resources per scene shouldn't be permanent and should be gone when changing scene
     /// </summary>
     public abstract void Shutdown();
 

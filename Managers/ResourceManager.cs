@@ -4,16 +4,21 @@ namespace Pine.Managers;
 
 public sealed class ResourceManager : IDisposable
 {
-    private Dictionary<string, object> resources = new();
-
-    public T Get<T>(string key) where T : notnull
+    private readonly Dictionary<string, object> resources = new();
+    
+    /// <summary>
+    /// Get a resource
+    /// </summary>
+    /// <exception cref="KeyNotFoundException">Thrown when the eesource name is not found </exception>
+    /// <exception cref="InvalidCastException">Thrown when you try to access the resource with by passing T type but the resource is not T type</exception>
+    public T Get<T>(string name) where T : notnull
     {
         object resource;
         T resourceTyped;
 
         try
         {
-            resource = resources[key];
+            resource = resources[name];
         }
         catch (Exception)
         {
@@ -31,25 +36,39 @@ public sealed class ResourceManager : IDisposable
 
         return resourceTyped;
     }
-
-    public void Add<T>(string key, T resource) where T : notnull
+    
+    /// <summary>
+    /// Add a new resource
+    /// </summary>
+    /// <param name="name">The name of the resource</param>
+    /// <param name="resource">the instance of the resource itself</param>
+    /// <typeparam name="T">the type of the resource usually this is inferred automatically</typeparam>
+    public void Add<T>(string name, T resource) where T : notnull
     {
-        resources.Add(key, resource);
+        resources.Add(name, resource);
     }
-
-    public void Remove<T>(string key) where T : notnull
+    
+    /// <summary>
+    /// Remove a resource
+    /// </summary>
+    /// <param name="name">The name of the resource</param>
+    /// <typeparam name="T">the type of the resource usually this is inferred automatically</typeparam>
+    public void Remove<T>(string name) where T : notnull
     {
-        if (resources[key] is IResource resource)
+        if (resources[name] is IResource resource)
         {
             resource.Dispose();
         }
 
-        resources.Remove(key);
+        resources.Remove(name);
     }
-
+    
+    /// <summary>
+    /// Dispose all the resource, this will call the Dispose method of the resource if it's an IResource
+    /// </summary>
     public void Dispose()
     {
-        foreach (var item in resources)
+        foreach (KeyValuePair<string, object> item in resources)
         {
             if (item.Value is IResource resource)
             {

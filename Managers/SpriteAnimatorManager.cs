@@ -5,82 +5,94 @@ namespace Pine.Managers;
 public sealed class SpriteAnimatorManager
 {
     private Dictionary<string, SpriteAnimator> spriteAnimators = new();
-    private string? currentAnimator;
+    private string? activeAnimator;
 
     /// <summary>
-    /// The current animator that will be playing if you call Play()
+    /// The active animator that will be playing if you call Play()
     /// </summary>
-    public SpriteAnimator? CurrentAnimator
+    public SpriteAnimator? ActiveAnimator
     {
         get
         {
-            if (currentAnimator is null)
+            if (activeAnimator is null)
             {
                 return null;
             }
 
-            return spriteAnimators[currentAnimator];
+            return spriteAnimators[activeAnimator];
         }
     }
-
-    public void SetCurrent(string name)
+    
+    /// <summary>
+    /// Set the active animator that will play
+    /// </summary>
+    /// <param name="name"></param>
+    /// <exception cref="Exception"></exception>
+    public void SetActive(string name)
     {
         if (!spriteAnimators.ContainsKey(name))
         {
             throw new Exception($"Sprite animator controller doesn't contains {name}");
         }
 
-        currentAnimator = name;
+        activeAnimator = name;
     }
-
+    
+    /// <summary>
+    /// Add an animator
+    /// </summary>
+    /// <param name="name">The name of the animator</param>
+    /// <param name="spriteAnimator">The animator object</param>
     public void AddAnimator(string name, SpriteAnimator spriteAnimator)
     {
         spriteAnimators.Add(name, spriteAnimator);
     }
-
+    
+    /// <summary>
+    /// Remove an animator
+    /// </summary>
+    /// <param name="name">The name of the animator</param>
     public void RemoveAnimator(string name)
     {
         spriteAnimators.Remove(name);
     }
-
+    
     /// <summary>
     /// Play the current sprite animator
     /// </summary>
     public void Play()
     {
-        if (currentAnimator is null)
+        if (activeAnimator is null)
         {
             return;
         }
 
-        spriteAnimators[currentAnimator].Play();
+        spriteAnimators[activeAnimator].Play();
     }
-
-
+    
     /// <summary>
     /// Stop the current sprite animator
     /// </summary>
     public void Stop()
     {
-        if (currentAnimator is null)
+        if (activeAnimator is null)
         {
             return;
         }
 
-        spriteAnimators[currentAnimator].Stop();
+        spriteAnimators[activeAnimator].Stop();
     }
-
-
+    
     /// <summary>
     /// Update the current sprite animator
     /// </summary>
     public void Update()
     {
-        if (currentAnimator is null)
+        if (activeAnimator is null)
         {
             return;
         }
 
-        spriteAnimators[currentAnimator].Update();
+        spriteAnimators[activeAnimator].Update();
     }
 }

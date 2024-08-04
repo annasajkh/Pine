@@ -41,12 +41,12 @@ public sealed class SceneManager : IRenderable, IUpdateable
         
         if (!sceneLambdas.Remove(name))
         {
-            throw new ArgumentException($"Scene with the name '{name}' does not exist.", nameof(name));
+            throw new KeyNotFoundException($"Scene with the name '{name}' does not exist.");
         }
     }
     
     /// <summary>
-    /// Changing the active scene to any other scene in this scene manager
+    /// Set the active scene to any other scene in this scene manager
     /// </summary>
     /// <param name="name">The name of the scene</param>
     /// <exception cref="ArgumentException">This will be thrown when the scene doesn't exist in the scene manager</exception>
@@ -54,7 +54,7 @@ public sealed class SceneManager : IRenderable, IUpdateable
     {
         if (!sceneLambdas.TryGetValue(name, out var sceneLambda))
         {
-            throw new InvalidOperationException($"Scene with the name '{name}' does not exist.");
+            throw new KeyNotFoundException($"Scene with the name '{name}' does not exist.");
         }
 
         activeScene?.ShutdownInternal();
