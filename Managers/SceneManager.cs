@@ -33,7 +33,7 @@ public sealed class SceneManager : IRenderable, IUpdateable
     {
         if (sceneLambdas.ContainsKey(name))
         {
-            throw new ArgumentException($"Scene '{name}' already exists.", nameof(name));
+            throw new InvalidOperationException($"Scene with the name '{name}' already exists.");
         }
         
         sceneLambdas[name] = sceneLambda;
@@ -54,7 +54,7 @@ public sealed class SceneManager : IRenderable, IUpdateable
         
         if (!sceneLambdas.Remove(name))
         {
-            throw new ArgumentException($"Scene '{name}' does not exist.", nameof(name));
+            throw new ArgumentException($"Scene with the name '{name}' does not exist.", nameof(name));
         }
     }
     
@@ -67,7 +67,7 @@ public sealed class SceneManager : IRenderable, IUpdateable
     {
         if (!sceneLambdas.TryGetValue(name, out var sceneLambda))
         {
-            throw new ArgumentException($"Scene '{name}' does not exist.", nameof(name));
+            throw new InvalidOperationException($"Scene with the name '{name}' does not exist.");
         }
 
         activeScene?.ShutdownInternal();
