@@ -8,6 +8,11 @@ namespace Pine.Components;
 public abstract class Scene
 {
     /// <summary>
+    /// The clear color for the scene
+    /// </summary>
+    public Color ClearColor { get; protected set; } = Color.Black;
+    
+    /// <summary>
     /// Get called when the scene is initialized
     /// or when changing scene where this scene is the target of the changing scene proccess
     /// </summary>

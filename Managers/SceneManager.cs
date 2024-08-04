@@ -1,4 +1,6 @@
-﻿using Foster.Framework;
+﻿using System;
+using System.Collections.Generic;
+using Foster.Framework;
 using Pine.Components;
 using Pine.Interfaces;
 
@@ -6,76 +8,95 @@ namespace Pine.Managers;
 
 public sealed class SceneManager : IRenderable, IUpdateable
 {
-    /// <summary>
-    /// The active scene is the one that is updating and drawing to the screen
-    /// </summary>
     private Scene? activeScene;
-
-    private Dictionary<string, Scene> scenes = new Dictionary<string, Scene>();
-
-    public SceneManager(string initialSceneName, Scene initialScene)
-    {
-        scenes.Add(initialSceneName, initialScene);
-
-        activeScene = scenes[initialSceneName];
-        activeScene.StartupInternal();
-    }
-
+    private readonly Dictionary<string, Func<Scene>> sceneLambdas = new();
+    
     /// <summary>
-    /// Add a scene to the scene manager
+    /// The constructor
+    /// When the constructor is called it will set the activeScene to be the initial scene
     /// </summary>
-    /// <param name="name">The name of the scene</param>
-    /// <param name="scene">The scene</param>
-    public void AddScene(string name, Scene scene)
+    /// <param name="initialSceneName">The initial scene name</param>
+    /// <param name="initialSceneLambda">This lambda should return a new scene when it's called ex () => new MainMenu() </param>
+    public SceneManager(string initialSceneName, Func<Scene> initialSceneLambda)
     {
-        scenes.Add(name, scene);
+        AddScene(initialSceneName, initialSceneLambda);
+        ChangeScene(initialSceneName);
     }
-
+    
     /// <summary>
-    /// Remove a scene from the scene manager
+    /// Add a new scene to this scene manager
     /// </summary>
     /// <param name="name">The scene name</param>
-    /// <exception cref="Exception">Exception if the the scene manager doesn't have an active scene or if you trying to remove an active scene</exception>
-    public void RemoveScene(string name)
+    /// <param name="sceneLambda">This lambda should return a new scene when it's called ex () => new MainMenu() </param>
+    /// <exception cref="ArgumentException">The exception will be thrown when the scene already exist in this manager</exception>
+    public void AddScene(string name, Func<Scene> sceneLambda)
     {
-        if (activeScene == null)
+        if (sceneLambdas.ContainsKey(name))
         {
-            throw new Exception("Scene manager doesn't contain active scene");
+            throw new ArgumentException($"Scene '{name}' already exists.", nameof(name));
         }
-
-        if (activeScene == scenes[name])
-        {
-            throw new Exception("Cannot unload active scene");
-        }
-
-        activeScene.ShutdownInternal();
-        scenes.Remove(name);
+        
+        sceneLambdas[name] = sceneLambda;
     }
-
+    
     /// <summary>
-    /// Change to different scene
+    /// Remove a scene from this scene manager
     /// </summary>
     /// <param name="name">The name of the scene</param>
-    /// <exception cref="Exception">Exception if the scene manager doesn't have an active scene</exception>
+    /// <exception cref="InvalidOperationException">This will be thrown when you try to remove an active scene</exception>
+    /// <exception cref="ArgumentException">This will get thrown when the scene you are trying to remove doesn't exist</exception>
+    public void RemoveScene(string name)
+    {
+        if (activeScene?.GetType().Name == name)
+        {
+            throw new InvalidOperationException("Cannot remove the active scene.");
+        }
+        
+        if (!sceneLambdas.Remove(name))
+        {
+            throw new ArgumentException($"Scene '{name}' does not exist.", nameof(name));
+        }
+    }
+    
+    /// <summary>
+    /// Changing the active scene to any other scene in this scene manager
+    /// </summary>
+    /// <param name="name">The name of the scene</param>
+    /// <exception cref="ArgumentException">This will be thrown when the scene doesn't exist in the scene manager</exception>
     public void ChangeScene(string name)
     {
-        if (activeScene == null)
+        if (!sceneLambdas.TryGetValue(name, out var sceneLambda))
         {
-            throw new Exception("Scene Manager doesn't contain active scene");
+            throw new ArgumentException($"Scene '{name}' does not exist.", nameof(name));
         }
 
-        activeScene.ShutdownInternal();
-        activeScene = (Scene)Activator.CreateInstance(scenes[name].GetType())!;
+        activeScene?.ShutdownInternal();
+        activeScene = sceneLambda();
         activeScene.StartupInternal();
     }
-
+    
+    /// <summary>
+    /// Update the active scene
+    /// </summary>
     public void Update()
     {
         activeScene?.Update();
     }
-
+    
+    /// <summary>
+    /// Render the active scene
+    /// </summary>
+    /// <param name="batcher">The batcher</param>
     public void Render(Batcher batcher)
     {
-        activeScene?.Render(batcher);
+        if (activeScene is not null)
+        {
+            Graphics.Clear(activeScene.ClearColor);
+        
+            activeScene.Render(batcher);
+        
+            batcher.Render();
+            batcher.Clear();   
+        }
     }
 }
