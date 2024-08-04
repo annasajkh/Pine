@@ -12,31 +12,18 @@ public sealed class SceneManager : IRenderable, IUpdateable
     private readonly Dictionary<string, Func<Scene>> sceneLambdas = new();
     
     /// <summary>
-    /// The constructor
-    /// When the constructor is called it will set the activeScene to be the initial scene
-    /// </summary>
-    /// <param name="initialSceneName">The initial scene name</param>
-    /// <param name="initialSceneLambda">This lambda should return a new scene when it's called ex () => new MainMenu() </param>
-    public SceneManager(string initialSceneName, Func<Scene> initialSceneLambda)
-    {
-        AddScene(initialSceneName, initialSceneLambda);
-        ChangeScene(initialSceneName);
-    }
-    
-    /// <summary>
     /// Add a new scene to this scene manager
     /// </summary>
     /// <param name="name">The scene name</param>
-    /// <param name="sceneLambda">This lambda should return a new scene when it's called ex () => new MainMenu() </param>
     /// <exception cref="ArgumentException">The exception will be thrown when the scene already exist in this manager</exception>
-    public void AddScene(string name, Func<Scene> sceneLambda)
+    public void AddScene<T>(string name) where T : Scene, new()
     {
         if (sceneLambdas.ContainsKey(name))
         {
             throw new InvalidOperationException($"Scene with the name '{name}' already exists.");
         }
         
-        sceneLambdas[name] = sceneLambda;
+        sceneLambdas.Add(name, () => new T());
     }
     
     /// <summary>
@@ -63,7 +50,7 @@ public sealed class SceneManager : IRenderable, IUpdateable
     /// </summary>
     /// <param name="name">The name of the scene</param>
     /// <exception cref="ArgumentException">This will be thrown when the scene doesn't exist in the scene manager</exception>
-    public void ChangeScene(string name)
+    public void SetActive(string name)
     {
         if (!sceneLambdas.TryGetValue(name, out var sceneLambda))
         {
