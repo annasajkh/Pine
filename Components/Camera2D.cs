@@ -15,7 +15,7 @@ public sealed class Camera2D
     /// </summary>
     public float Rotation { get; set; }
 
-    /// <summary>
+    /// <summary> 
     /// The origin of the camera
     /// </summary>
     public Vector2 Origin

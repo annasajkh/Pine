@@ -9,7 +9,7 @@ public sealed class ResourceManager : IDisposable
     /// <summary>
     /// Get a resource
     /// </summary>
-    /// <exception cref="KeyNotFoundException">Thrown when the eesource name is not found </exception>
+    /// <exception cref="KeyNotFoundException">Thrown when the resource name is not found </exception>
     /// <exception cref="InvalidCastException">Thrown when you try to access the resource with by passing T type but the resource is not T type</exception>
     public T Get<T>(string name) where T : notnull
     {

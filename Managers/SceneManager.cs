@@ -52,7 +52,7 @@ public sealed class SceneManager : IRenderable, IUpdateable
     /// <exception cref="ArgumentException">This will be thrown when the scene doesn't exist in the scene manager</exception>
     public void SetActive(string name)
     {
-        if (!sceneLambdas.TryGetValue(name, out var sceneLambda))
+        if (!sceneLambdas.TryGetValue(name, out  Func<Scene>? sceneLambda))
         {
             throw new KeyNotFoundException($"Scene with the name '{name}' does not exist.");
         }
