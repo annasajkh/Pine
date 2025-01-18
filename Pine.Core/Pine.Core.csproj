@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+    <PropertyGroup>
+        <PackageId>PineFramework</PackageId>
+        <Version>0.1.1</Version>
+        <Title>Pine</Title>
+        <Description>Foster's extension adding more features</Description>
+        <Authors>AnnasVirtual</Authors>
+        <Copyright>Copyright (c) 2024 AnnasVirtual</Copyright>
+        <PackageProjectUrl>https://github.com/annasajkh/Pine</PackageProjectUrl>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>https://github.com/annasajkh/Pine</RepositoryUrl>
+        <PackageTags>csharp, gamedev, fosterframework</PackageTags>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <WarningsAsErrors>nullable</WarningsAsErrors>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <None Include="icon.png">
+        <Pack>True</Pack>
+        <PackagePath>/</PackagePath>
+      </None>
+      <None Include="README.md">
+        <Pack>True</Pack>
+        <PackagePath>/</PackagePath>
+      </None>
+    </ItemGroup>
+  
+	<PropertyGroup Condition="'$(Configuration)' == 'Release'">
+		<DebugSymbols>false</DebugSymbols>
+		<DebugType>None</DebugType>
+	</PropertyGroup>
+  
+	<ItemGroup>
+	  <PackageReference Include="FosterFramework" Version="0.1.18-alpha" />
+	</ItemGroup>
+  
+</Project>

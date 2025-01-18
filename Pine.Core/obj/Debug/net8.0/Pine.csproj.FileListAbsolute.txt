@@ -1,0 +1,13 @@
+M:\Projects\Programming\PineFramework\Pine\Pine\bin\Debug\net8.0\Pine.deps.json
+M:\Projects\Programming\PineFramework\Pine\Pine\bin\Debug\net8.0\Pine.dll
+M:\Projects\Programming\PineFramework\Pine\Pine\bin\Debug\net8.0\Pine.pdb
+M:\Projects\Programming\PineFramework\Pine\Pine\obj\Debug\net8.0\Pine.csproj.AssemblyReference.cache
+M:\Projects\Programming\PineFramework\Pine\Pine\obj\Debug\net8.0\Pine.GeneratedMSBuildEditorConfig.editorconfig
+M:\Projects\Programming\PineFramework\Pine\Pine\obj\Debug\net8.0\Pine.AssemblyInfoInputs.cache
+M:\Projects\Programming\PineFramework\Pine\Pine\obj\Debug\net8.0\Pine.AssemblyInfo.cs
+M:\Projects\Programming\PineFramework\Pine\Pine\obj\Debug\net8.0\Pine.csproj.CoreCompileInputs.cache
+M:\Projects\Programming\PineFramework\Pine\Pine\obj\Debug\net8.0\Pine.sourcelink.json
+M:\Projects\Programming\PineFramework\Pine\Pine\obj\Debug\net8.0\Pine.dll
+M:\Projects\Programming\PineFramework\Pine\Pine\obj\Debug\net8.0\refint\Pine.dll
+M:\Projects\Programming\PineFramework\Pine\Pine\obj\Debug\net8.0\Pine.pdb
+M:\Projects\Programming\PineFramework\Pine\Pine\obj\Debug\net8.0\ref\Pine.dll

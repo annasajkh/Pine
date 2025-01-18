@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>PineFramework</id>
+    <version>0.0.2</version>
+    <title>Pine</title>
+    <authors>AnnasVirtual</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/annasajkh/Pine</projectUrl>
+    <description>Foster's extension adding more features</description>
+    <copyright>Copyright (c) 2024 AnnasVirtual</copyright>
+    <tags>csharp, gamedev, fosterframework</tags>
+    <repository type="git" url="https://github.com/annasajkh/Pine" commit="4d2c35326b7a8dac4db603664b2cbbadbfa41ab9" />
+    <dependencies>
+      <group targetFramework="net8.0">
+        <dependency id="FosterFramework" version="0.1.18-alpha" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="M:\Projects\Programming\PineFramework\Pine\Pine.Core\bin\Release\net8.0\Pine.Core.dll" target="lib\net8.0\Pine.Core.dll" />
+    <file src="M:\Projects\Programming\PineFramework\Pine\Pine.Core\icon.png" target="\icon.png" />
+    <file src="M:\Projects\Programming\PineFramework\Pine\Pine.Core\README.md" target="\README.md" />
+  </files>
+</package>

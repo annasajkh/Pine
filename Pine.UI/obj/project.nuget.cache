@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "3P0+ok3cnuw=",
+  "success": true,
+  "projectFilePath": "M:\\Projects\\Programming\\PineFramework\\Pine\\Pine.UI\\Pine.UI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Annas\\.nuget\\packages\\fosterframework\\0.1.18-alpha\\fosterframework.0.1.18-alpha.nupkg.sha512",
+    "C:\\Users\\Annas\\.nuget\\packages\\pineframework\\0.1.1\\pineframework.0.1.1.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,15 @@
+M:\Projects\Programming\PineFramework\Pine\Pine.UI\bin\Release\net8.0\Pine.UI.deps.json
+M:\Projects\Programming\PineFramework\Pine\Pine.UI\bin\Release\net8.0\Pine.UI.dll
+M:\Projects\Programming\PineFramework\Pine\Pine.UI\bin\Release\net8.0\Pine.UI.pdb
+M:\Projects\Programming\PineFramework\Pine\Pine.UI\bin\Release\net8.0\Pine.Core.dll
+M:\Projects\Programming\PineFramework\Pine\Pine.UI\obj\Release\net8.0\Pine.UI.csproj.AssemblyReference.cache
+M:\Projects\Programming\PineFramework\Pine\Pine.UI\obj\Release\net8.0\Pine.UI.GeneratedMSBuildEditorConfig.editorconfig
+M:\Projects\Programming\PineFramework\Pine\Pine.UI\obj\Release\net8.0\Pine.UI.AssemblyInfoInputs.cache
+M:\Projects\Programming\PineFramework\Pine\Pine.UI\obj\Release\net8.0\Pine.UI.AssemblyInfo.cs
+M:\Projects\Programming\PineFramework\Pine\Pine.UI\obj\Release\net8.0\Pine.UI.csproj.CoreCompileInputs.cache
+M:\Projects\Programming\PineFramework\Pine\Pine.UI\obj\Release\net8.0\Pine.UI.sourcelink.json
+M:\Projects\Programming\PineFramework\Pine\Pine.UI\obj\Release\net8.0\Pine.UI.csproj.Up2Date
+M:\Projects\Programming\PineFramework\Pine\Pine.UI\obj\Release\net8.0\Pine.UI.dll
+M:\Projects\Programming\PineFramework\Pine\Pine.UI\obj\Release\net8.0\refint\Pine.UI.dll
+M:\Projects\Programming\PineFramework\Pine\Pine.UI\obj\Release\net8.0\Pine.UI.pdb
+M:\Projects\Programming\PineFramework\Pine\Pine.UI\obj\Release\net8.0\ref\Pine.UI.dll

@@ -1,0 +1,205 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0": {
+      "Hexa.NET.Box2D/1.0.1": {
+        "type": "package",
+        "dependencies": {
+          "HexaGen.Runtime": "1.1.16"
+        },
+        "compile": {
+          "lib/net8.0/Hexa.NET.Box2D.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Hexa.NET.Box2D.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/linux-arm64/native/libbox2d.so": {
+            "assetType": "native",
+            "rid": "linux-arm64"
+          },
+          "runtimes/linux-x64/native/libbox2d.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/osx-arm64/native/libbox2d.dylib": {
+            "assetType": "native",
+            "rid": "osx-arm64"
+          },
+          "runtimes/osx-x64/native/libbox2d.dylib": {
+            "assetType": "native",
+            "rid": "osx-x64"
+          },
+          "runtimes/win-x64/native/box2d.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          }
+        }
+      },
+      "HexaGen.Runtime/1.1.16": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/HexaGen.Runtime.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/HexaGen.Runtime.dll": {
+            "related": ".xml"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Hexa.NET.Box2D/1.0.1": {
+      "sha512": "YzuhFaA6zgknLBg4sdtVXFmtY2IdPlMMJ+BbWxXKlCiTUXUue5snqNi5UEQhtAE9W/f/L3D8Wvez6JGiljPavg==",
+      "type": "package",
+      "path": "hexa.net.box2d/1.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "hexa.net.box2d.1.0.1.nupkg.sha512",
+        "hexa.net.box2d.nuspec",
+        "lib/net6.0/Hexa.NET.Box2D.dll",
+        "lib/net6.0/Hexa.NET.Box2D.xml",
+        "lib/net7.0/Hexa.NET.Box2D.dll",
+        "lib/net7.0/Hexa.NET.Box2D.xml",
+        "lib/net8.0/Hexa.NET.Box2D.dll",
+        "lib/net8.0/Hexa.NET.Box2D.xml",
+        "lib/net9.0/Hexa.NET.Box2D.dll",
+        "lib/net9.0/Hexa.NET.Box2D.xml",
+        "lib/netstandard2.0/Hexa.NET.Box2D.dll",
+        "lib/netstandard2.0/Hexa.NET.Box2D.xml",
+        "lib/netstandard2.1/Hexa.NET.Box2D.dll",
+        "lib/netstandard2.1/Hexa.NET.Box2D.xml",
+        "runtimes/linux-arm64/native/libbox2d.so",
+        "runtimes/linux-x64/native/libbox2d.so",
+        "runtimes/osx-arm64/native/libbox2d.dylib",
+        "runtimes/osx-x64/native/libbox2d.dylib",
+        "runtimes/win-x64/native/box2d.dll"
+      ]
+    },
+    "HexaGen.Runtime/1.1.16": {
+      "sha512": "9wuMbDqvTnC4mdUqW4uUV85W1o4PPAEuzI+0ue3cIH26QIJf52Cru7MGx0AeQKO1NTLo/wZo2MY6/zmFxSY3GA==",
+      "type": "package",
+      "path": "hexagen.runtime/1.1.16",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "hexagen.runtime.1.1.16.nupkg.sha512",
+        "hexagen.runtime.nuspec",
+        "lib/net472/HexaGen.Runtime.dll",
+        "lib/net472/HexaGen.Runtime.xml",
+        "lib/net6.0/HexaGen.Runtime.dll",
+        "lib/net6.0/HexaGen.Runtime.xml",
+        "lib/net7.0/HexaGen.Runtime.dll",
+        "lib/net7.0/HexaGen.Runtime.xml",
+        "lib/net8.0-android34.0/HexaGen.Runtime.dll",
+        "lib/net8.0-android34.0/HexaGen.Runtime.xml",
+        "lib/net8.0/HexaGen.Runtime.dll",
+        "lib/net8.0/HexaGen.Runtime.xml",
+        "lib/net9.0-android35.0/HexaGen.Runtime.dll",
+        "lib/net9.0-android35.0/HexaGen.Runtime.xml",
+        "lib/net9.0/HexaGen.Runtime.dll",
+        "lib/net9.0/HexaGen.Runtime.xml",
+        "lib/netstandard2.0/HexaGen.Runtime.dll",
+        "lib/netstandard2.0/HexaGen.Runtime.xml",
+        "lib/netstandard2.1/HexaGen.Runtime.dll",
+        "lib/netstandard2.1/HexaGen.Runtime.xml"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net8.0": [
+      "Hexa.NET.Box2D >= 1.0.1"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Annas\\.nuget\\packages\\": {},
+    "C:\\Users\\Annas\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "M:\\Projects\\Programming\\PineFramework\\Pine\\Pine.Box2D\\Pine.Physics2D.csproj",
+      "projectName": "Pine.Physics2D",
+      "projectPath": "M:\\Projects\\Programming\\PineFramework\\Pine\\Pine.Box2D\\Pine.Physics2D.csproj",
+      "packagesPath": "C:\\Users\\Annas\\.nuget\\packages\\",
+      "outputPath": "M:\\Projects\\Programming\\PineFramework\\Pine\\Pine.Box2D\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Users\\Annas\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder",
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\Annas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Annas\\AppData\\Roaming\\NuGet\\config\\Godot.Offline.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      },
+      "SdkAnalysisLevel": "9.0.100"
+    },
+    "frameworks": {
+      "net8.0": {
+        "targetAlias": "net8.0",
+        "dependencies": {
+          "Hexa.NET.Box2D": {
+            "target": "Package",
+            "version": "[1.0.1, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
