@@ -164,7 +164,7 @@ public class Widget : IUpdateable, IRenderable
         Height = height;
     }
 
-    public virtual void Update()
+    public virtual void Update(App app)
     {
         xWithPadding = X;
         yWithPadding = Y;
@@ -213,24 +213,24 @@ public class Widget : IUpdateable, IRenderable
 
         RectInt widgetRect = new(xWithPadding, yWithPadding, widthWithPadding, heightWithPadding);
 
-        if (widgetRect.Contains(Input.Mouse.Position))
+        if (widgetRect.Contains(app.Input.Mouse.Position))
         {    
-            if (Input.Mouse.Down(MouseButtons.Left))
+            if (app.Input.Mouse.Down(MouseButtons.Left))
             {
                 OnMouseDown?.Invoke();
             }
         }
 
-        if (Input.Mouse.Released(MouseButtons.Left))
+        if (app.Input.Mouse.Released(MouseButtons.Left))
         {
             OnMouseReleased?.Invoke();
         }
 
-        if (widgetRect.Contains(Input.Mouse.Position) && !pointerInsideOnce)
+        if (widgetRect.Contains(app.Input.Mouse.Position) && !pointerInsideOnce)
         {
             OnMouseEnter?.Invoke();
 
-            if (Input.Mouse.Pressed(MouseButtons.Left))
+            if (app.Input.Mouse.Pressed(MouseButtons.Left))
             {
                 OnMousePressed?.Invoke();
             }
@@ -239,7 +239,7 @@ public class Widget : IUpdateable, IRenderable
             pointerOutsideOnce = false;
         }
 
-        if (!widgetRect.Contains(Input.Mouse.Position) && !pointerOutsideOnce)
+        if (!widgetRect.Contains(app.Input.Mouse.Position) && !pointerOutsideOnce)
         {
             OnMouseExit?.Invoke();
 
@@ -248,7 +248,7 @@ public class Widget : IUpdateable, IRenderable
         }
     }
 
-    public virtual void Render(Batcher batcher)
+    public virtual void Render(App app, Batcher batcher)
     {
         if (DebugDraw)
         {

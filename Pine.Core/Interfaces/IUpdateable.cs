@@ -1,9 +1,11 @@
-﻿namespace Pine.Core.Interfaces;
+﻿using Foster.Framework;
+
+namespace Pine.Core.Interfaces;
 
 /// <summary>
 /// Something that can be updated should implement this interface.
 /// </summary>
 public interface IUpdateable
 {
-    public void Update();
+    public void Update(App app);
 }

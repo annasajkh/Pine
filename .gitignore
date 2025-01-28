@@ -1,2 +1,7 @@
-Pine/bin
-Pine/obj
+Pine.Core/bin
+Pine.Core/obj
+Pine.UI/bin
+Pine.UI/obj
+Pine.Sandbox/bin
+Pine.Sandbox/obj
+.vs/

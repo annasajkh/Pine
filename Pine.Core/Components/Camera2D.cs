@@ -11,6 +11,11 @@ public sealed class Camera2D
     public Vector2 Position { get; set; }
 
     /// <summary>
+    /// The size of the camera
+    /// </summary>
+    public Vector2 Size { get; set; }
+
+    /// <summary>
     /// The rotation of the camera.
     /// </summary>
     public float Rotation { get; set; }
@@ -22,7 +27,7 @@ public sealed class Camera2D
     {
         get
         {
-            return new Vector2(App.Width / 2, App.Height / 2);
+            return new Vector2(Size.X / 2, Size.Y / 2);
         }
     }
 
@@ -41,8 +46,8 @@ public sealed class Camera2D
             return new Rect(
                 x: Position.X - Origin.X / Zoom,
                 y: Position.Y - Origin.Y / Zoom,
-                w: App.Width / Zoom,
-                h: App.Height / Zoom
+                w: Size.X / Zoom,
+                h: Size.Y / Zoom
             );
         }
     }
@@ -93,9 +98,10 @@ public sealed class Camera2D
     /// <param name="position">The position of the camera.</param>
     /// <param name="rotation">The rotation of the camera.</param>
     /// <param name="zoom">The camera zoom</param>
-    public Camera2D(Vector2 position, float rotation, float zoom)
+    public Camera2D(Vector2 position, Vector2 size, float rotation, float zoom)
     {
         Position = position;
+        Size = size;
         Rotation = rotation;
         Zoom = zoom;
     }

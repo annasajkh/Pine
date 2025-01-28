@@ -5,31 +5,36 @@ using Pine.Core.Managers;
 
 namespace PineSandbox.Scripts.Core;
 
-public class Application : Module
+public class Application : App
 {
-    SceneManager SceneManager { get; } = new();
-    Batcher Batcher { get; } = new();
+    public SceneManager SceneManager { get; }
+    public Batcher Batcher { get; } 
 
-    public override void Startup()
+    public Application(string name, int width, int height, GraphicsDriver preferredGraphicsDriver) : base(new AppConfig(name, name, width, height, PreferredGraphicsDriver: preferredGraphicsDriver))
+    {
+        Batcher = new(GraphicsDevice);
+        SceneManager = new SceneManager(this);
+    }
+
+    protected override void Startup()
     {
         SceneManager.AddScene<TestUI>("TestUI");
         SceneManager.AddScene<TestParticle>("TestParticle");
-        SceneManager.AddScene<TestImGUI>("TestImGUI");
 
         SceneManager.SetActive("TestParticle");
     }
 
-    public override void Update()
+    protected override void Update()
     {
         SceneManager.Update();
     }
 
-    public override void Render()
+    protected override void Render()
     {
         SceneManager.Render(Batcher);
     }
 
-    public override void Shutdown()
+    protected override void Shutdown()
     {
 
     }

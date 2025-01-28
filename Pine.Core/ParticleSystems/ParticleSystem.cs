@@ -9,41 +9,63 @@ public class ParticleSystem : IUpdateable, IRenderable
 {
     public Vector2 Position { get; set; }
     public bool Oneshot { get; set; }
-    public List<Particle> Particles { get; }
     public Timer SpawnTimer { get; }
     public bool Relative { get; set; }
+
+    private List<Particle> particles;
 
     public ParticleSystem(Vector2 position, bool oneshot, bool relative, float spawnDelay)
     {
         Position = position;
         Oneshot = oneshot;
-        Particles = new List<Particle>();
         Relative = relative;
+
+        particles = new List<Particle>();
 
         SpawnTimer = new Timer(spawnDelay, oneshot);
         SpawnTimer.Start();
     }
 
-    public void Update()
+    public void AddParticle(Particle particle)
     {
-        SpawnTimer.Update();
-
-        for (int i = Particles.Count - 1; i >= 0; i--)
+        if (Relative)
         {
-            Particles[i].Update();
+            particle.Position -= Position;
+        }
 
-            if (Particles[i].IsTimeout)
+        particles.Add(particle);
+    }
+
+    public void Update(App app)
+    {
+        SpawnTimer.Update(app);
+
+        for (int i = particles.Count - 1; i >= 0; i--)
+        {
+            particles[i].Update(app);
+
+            if (particles[i].IsTimeout)
             {
-                Particles.Remove(Particles[i]);
+                particles.Remove(particles[i]);
             }
         }
     }
 
-    public void Render(Batcher batcher)
+    public void Render(App app, Batcher batcher)
     {
-        foreach (var particle in Particles)
+        if (Relative)
         {
-            particle.Render(batcher);
+            batcher.PushMatrix(Position);
+        }
+
+        foreach (var particle in particles)
+        {
+            particle.Render(app, batcher);
+        }
+
+        if (Relative)
+        {
+            batcher.PopMatrix();
         }
     }
 }

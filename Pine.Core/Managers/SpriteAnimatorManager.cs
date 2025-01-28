@@ -1,8 +1,10 @@
-﻿using Pine.Core.Components;
+﻿using Foster.Framework;
+using Pine.Core.Components;
+using Pine.Core.Interfaces;
 
 namespace Pine.Core.Managers;
 
-public sealed class SpriteAnimatorManager
+public sealed class SpriteAnimatorManager : IUpdateable
 {
     private Dictionary<string, SpriteAnimator> spriteAnimators = new();
     private string? activeAnimator;
@@ -86,13 +88,13 @@ public sealed class SpriteAnimatorManager
     /// <summary>
     /// Update the current sprite animator.
     /// </summary>
-    public void Update()
+    public void Update(App app)
     {
         if (activeAnimator is null)
         {
             return;
         }
 
-        spriteAnimators[activeAnimator].Update();
+        spriteAnimators[activeAnimator].Update(app);
     }
 }

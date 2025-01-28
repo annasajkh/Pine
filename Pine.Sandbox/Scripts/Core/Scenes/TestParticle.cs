@@ -10,32 +10,32 @@ public class TestParticle : Scene
 {
     ParticleSystem particleSystem;
 
-    public override void Startup()
+    public override void Startup(App app)
     {
         ClearColor = Color.Black;
 
-        particleSystem = new ParticleSystem(position: Input.Mouse.Position, oneshot: false, relative: true, spawnDelay: 0.01f);
+        particleSystem = new ParticleSystem(position: app.Input.Mouse.Position, oneshot: false, relative: false, spawnDelay: 0.001f);
 
         particleSystem.SpawnTimer.OnTimeout += () =>
         {
-            particleSystem.Particles.Add(new RotatingRect(particleSystem.Position, new Vector2(20, 20), 1));
+            particleSystem.AddParticle(new RotatingRect(position: particleSystem.Position, size: new Vector2(20, 20), lifetime: 1));
         };
 
     }
 
-    public override void Update()
+    public override void Update(App app)
     {
-        particleSystem.Position = Input.Mouse.Position;
+        particleSystem.Position = app.Input.Mouse.Position;
 
-        particleSystem.Update();
+        particleSystem.Update(app);
     }
 
-    public override void Render(Batcher batcher)
+    public override void Render(App app, Batcher batcher)
     {
-        particleSystem.Render(batcher);
+        particleSystem.Render(app, batcher);
     }
 
-    public override void Shutdown()
+    public override void Shutdown(App app)
     {
 
     }

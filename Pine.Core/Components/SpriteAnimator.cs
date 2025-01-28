@@ -73,7 +73,7 @@ public sealed class SpriteAnimator : IUpdateable
     /// <summary>
     /// Update the animation so that it animate duh.
     /// </summary>
-    public void Update()
+    public void Update(App app)
     {
         // Update to the next frame
         if (Playing && singleFrameElapsed >= 1f / FramePerSecond)
@@ -83,7 +83,7 @@ public sealed class SpriteAnimator : IUpdateable
             singleFrameElapsed = 0;
         }
 
-        singleFrameElapsed += Time.Delta;
+        singleFrameElapsed += app.Time.Delta;
 
         // Out of bounds handling and looping
         if (FrameIndex < 0)

@@ -9,10 +9,11 @@ namespace PineSandbox.Scripts.Core.Scenes;
 public class TestUI : Scene
 {
     Panel panel = new(x: 300, y: 300, width: 100, height: 100);
-    CenterContainer centerContainer = new(0, 0, App.Width, App.Height);
+    CenterContainer centerContainer;
 
-    public override void Startup()
+    public override void Startup(App app)
     {
+        centerContainer = new CenterContainer(0, 0, app.Window.Width, app.Window.Height);
         ClearColor = Color.FromHexStringRGBA("#1e2531");
 
         panel.Color = Color.FromHexStringRGBA("#19202a");
@@ -43,20 +44,20 @@ public class TestUI : Scene
         centerContainer.Child = panel;
     }
 
-    public override void Update()
+    public override void Update(App app)
     {
-        centerContainer.Width = App.Width;
-        centerContainer.Height = App.Height;
+        centerContainer.Width = app.Window.Width;
+        centerContainer.Height = app.Window.Height;
 
-        centerContainer.Update();
+        centerContainer.Update(app);
     }
 
-    public override void Render(Batcher batcher)
+    public override void Render(App app, Batcher batcher)
     {
-        centerContainer.Render(batcher);
+        centerContainer.Render(app, batcher);
     }
 
-    public override void Shutdown()
+    public override void Shutdown(App app)
     {
 
     }

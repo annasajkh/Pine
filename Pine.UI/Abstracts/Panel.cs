@@ -27,7 +27,7 @@ public class Panel : Widget, IRenderable
 
     }
 
-    public override void Render(Batcher batcher)
+    public void Render(App app, Batcher batcher)
     {
         if (BorderRadiusTopLeft == 0 && BorderRadiusTopRight == 0 && BorderRadiusBottomRight == 0 && BorderRadiusBottomLeft == 0)
         {
@@ -54,6 +54,6 @@ public class Panel : Widget, IRenderable
             }
         }
 
-        base.Render(batcher);
+        base.Render(app, batcher);
     }
 }

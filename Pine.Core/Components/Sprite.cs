@@ -130,7 +130,7 @@ public sealed class Sprite : IRenderable
     /// </summary>
     /// <param name="spriteBatch"></param>
     /// <exception cref="IndexOutOfRangeException"></exception>
-    public void Render(Batcher batcher)
+    public void Render(App app, Batcher batcher)
     {
         if (FrameIndex > FrameCount - 1)
         {

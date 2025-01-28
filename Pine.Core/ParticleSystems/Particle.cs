@@ -45,10 +45,10 @@ public abstract class Particle : IUpdateable, IRenderable
         lifetimeTimer.Start();
     }
 
-    public virtual void Update()
+    public virtual void Update(App app)
     {
-        lifetimeTimer.Update();
+        lifetimeTimer.Update(app);
     }
 
-    public abstract void Render(Batcher batcher);
+    public abstract void Render(App app, Batcher batcher);
 }

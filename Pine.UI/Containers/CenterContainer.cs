@@ -12,19 +12,19 @@ public class CenterContainer : Widget
         Child = child;
     }
 
-    public override void Update()
+    public override void Update(App app)
     {
-        base.Update();
-        Child.Update();
+        base.Update(app);
+        Child.Update(app);
 
         Child.X = FullX + FullWidth / 2 - Child.FullWidth / 2;
         Child.Y = FullY + FullHeight / 2 - Child.FullHeight / 2;
 
     }
 
-    public override void Render(Batcher batcher)
+    public override void Render(App app, Batcher batcher)
     {
-        base.Render(batcher);
-        Child.Render(batcher);
+        base.Render(app, batcher);
+        Child.Render(app, batcher);
     }
 }

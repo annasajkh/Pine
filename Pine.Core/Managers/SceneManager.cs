@@ -1,13 +1,18 @@
 ﻿using Foster.Framework;
 using Pine.Core.Components;
-using Pine.Core.Interfaces;
 
 namespace Pine.Core.Managers;
 
-public sealed class SceneManager : IRenderable, IUpdateable
+public sealed class SceneManager
 {
+    private App app;
     private Scene? activeScene;
     private readonly Dictionary<string, Func<Scene>> sceneLambdas = new();
+
+    public SceneManager(App app)
+    {
+        this.app = app;
+    }
     
     /// <summary>
     /// Add a new scene to this scene manager.
@@ -55,9 +60,9 @@ public sealed class SceneManager : IRenderable, IUpdateable
             throw new KeyNotFoundException($"Scene with the name '{name}' does not exist.");
         }
 
-        activeScene?.ShutdownInternal();
+        activeScene?.ShutdownInternal(app);
         activeScene = sceneLambda();
-        activeScene.StartupInternal();
+        activeScene.StartupInternal(app);
     }
     
     /// <summary>
@@ -65,7 +70,7 @@ public sealed class SceneManager : IRenderable, IUpdateable
     /// </summary>
     public void Update()
     {
-        activeScene?.Update();
+        activeScene?.Update(app);
     }
     
     /// <summary>
@@ -76,11 +81,11 @@ public sealed class SceneManager : IRenderable, IUpdateable
     {
         if (activeScene is not null)
         {
-            Graphics.Clear(activeScene.ClearColor);
+            app.Window.Clear(activeScene.ClearColor);
         
-            activeScene.Render(batcher);
+            activeScene.Render(app, batcher);
         
-            batcher.Render();
+            batcher.Render(app.Window);
             batcher.Clear();   
         }
     }

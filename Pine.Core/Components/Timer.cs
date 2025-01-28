@@ -60,11 +60,11 @@ public sealed class Timer : IUpdateable
     /// <summary>
     /// Update the timer so it run duh.
     /// </summary>
-    public void Update()
+    public void Update(App app)
     {
         if (!Paused)
         {
-            TimeLeft += Time.Delta;
+            TimeLeft += app.Time.Delta;
 
             if (TimeLeft >= WaitTime)
             {

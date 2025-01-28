@@ -58,7 +58,7 @@ public sealed class ResourceManager : IDisposable
     /// <typeparam name="T">the type of the resource usually this is inferred automatically.</typeparam>
     public void Remove<T>(string name) where T : notnull
     {
-        if (resources[name] is IResource resource)
+        if (resources[name] is IGraphicResource resource)
         {
             resource.Dispose();
         }
@@ -73,7 +73,7 @@ public sealed class ResourceManager : IDisposable
     {
         foreach (KeyValuePair<string, object> item in resources)
         {
-            if (item.Value is IResource resource)
+            if (item.Value is IGraphicResource resource)
             {
                 resource.Dispose();
             }

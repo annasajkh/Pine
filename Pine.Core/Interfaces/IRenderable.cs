@@ -7,5 +7,5 @@ namespace Pine.Core.Interfaces;
 /// </summary>
 public interface IRenderable
 {
-    public void Render(Batcher batcher);
+    public void Render(App app, Batcher batcher);
 }
