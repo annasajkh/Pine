@@ -7,9 +7,9 @@
   </PropertyGroup>
     <PropertyGroup>
         <PackageId>PineFramework</PackageId>
-        <Version>0.1.2</Version>
+        <Version>0.1.3</Version>
         <Title>Pine</Title>
-        <Description>Foster's extension adding more features</Description>
+        <Description>Foster's extension adding more features https://github.com/FosterFramework/Foster</Description>
         <Authors>AnnasVirtual</Authors>
         <Copyright>Copyright (c) 2024 AnnasVirtual</Copyright>
         <PackageProjectUrl>https://github.com/annasajkh/Pine</PackageProjectUrl>
@@ -38,8 +38,7 @@
 	</PropertyGroup>
   
 	<ItemGroup>
-	  <PackageReference Include="FosterFramework" Version="0.2.0" />
-	  <PackageReference Include="ImGui.NET" Version="1.91.6.1" />
+	  <PackageReference Include="FosterFramework" Version="0.2.1" />
 	</ItemGroup>
   
 </Project>

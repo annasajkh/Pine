@@ -8,13 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FosterFramework" Version="0.2.0" />
+    <PackageReference Include="FosterFramework" Version="0.2.1" />
     <PackageReference Include="ImGui.NET" Version="1.91.6.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Pine.Core\Pine.Core.csproj" />
-    <ProjectReference Include="..\Pine.UI\Pine.UI.csproj" />
   </ItemGroup>
 
 </Project>

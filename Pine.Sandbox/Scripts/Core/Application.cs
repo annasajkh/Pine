@@ -1,6 +1,5 @@
 ﻿using Foster.Framework;
 using Pine.Sandbox.Scripts.Core.Scenes;
-using PineSandbox.Scripts.Core.Scenes;
 using Pine.Core.Managers;
 
 namespace PineSandbox.Scripts.Core;
@@ -18,7 +17,6 @@ public class Application : App
 
     protected override void Startup()
     {
-        SceneManager.AddScene<TestUI>("TestUI");
         SceneManager.AddScene<TestParticle>("TestParticle");
 
         SceneManager.SetActive("TestParticle");

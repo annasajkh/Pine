@@ -1,4 +1,5 @@
-﻿using PineSandbox.Scripts.Core;
+﻿using Foster.Framework;
+using PineSandbox.Scripts.Core;
 
 namespace PineSandbox.Scripts;
 
@@ -8,15 +9,15 @@ internal class Program
     {
         if (OperatingSystem.IsWindows())
         {
-            new Application("Pine Sandbox", 960, 540, Foster.Framework.GraphicsDriver.D3D12).Run();
+            new Application("Pine Sandbox", 960, 540, GraphicsDriver.D3D12).Run();
         }
         else if (OperatingSystem.IsLinux())
         {
-            new Application("Pine Sandbox", 960, 540, Foster.Framework.GraphicsDriver.Vulkan).Run();
+            new Application("Pine Sandbox", 960, 540, GraphicsDriver.Vulkan).Run();
         }
         else if (OperatingSystem.IsMacOS())
         {
-            new Application("Pine Sandbox", 960, 540, Foster.Framework.GraphicsDriver.Metal).Run();
+            new Application("Pine Sandbox", 960, 540, GraphicsDriver.Metal).Run();
         }
     }
 }
