@@ -1,5 +1,4 @@
-﻿using Foster.Framework;
-using Pine.Core.Components;
+﻿using Pine.Core.Components;
 using Pine.Core.Interfaces;
 
 namespace Pine.Core.Managers;
@@ -88,13 +87,13 @@ public sealed class SpriteAnimatorManager : IUpdateable
     /// <summary>
     /// Update the current sprite animator.
     /// </summary>
-    public void Update(App app)
+    public void Update(PineApplication pineApplication)
     {
         if (activeAnimator is null)
         {
             return;
         }
 
-        spriteAnimators[activeAnimator].Update(app);
+        spriteAnimators[activeAnimator].Update(pineApplication);
     }
 }

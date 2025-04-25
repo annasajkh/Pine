@@ -1,7 +1,7 @@
-﻿using Foster.Framework;
+﻿using Pine.Core.Components;
 using Pine.Core.Interfaces;
 
-namespace Pine.Core.Components;
+namespace Pine.Core.DataStructures;
 
 public sealed class Timer : IUpdateable
 {
@@ -14,7 +14,7 @@ public sealed class Timer : IUpdateable
     /// Whether it's only timeout once.
     /// </summary>
     public bool Oneshot { get; set; }
-    
+
     /// <summary>
     /// The time it have left before it time out.
     /// </summary>
@@ -48,7 +48,7 @@ public sealed class Timer : IUpdateable
     {
         Paused = false;
     }
-    
+
     /// <summary>
     /// Stop the timer.
     /// </summary>
@@ -60,11 +60,11 @@ public sealed class Timer : IUpdateable
     /// <summary>
     /// Update the timer so it run duh.
     /// </summary>
-    public void Update(App app)
+    public void Update(PineApplication pineApplication)
     {
         if (!Paused)
         {
-            TimeLeft += app.Time.Delta;
+            TimeLeft += pineApplication.Time.Delta;
 
             if (TimeLeft >= WaitTime)
             {

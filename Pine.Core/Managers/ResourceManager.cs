@@ -1,6 +1,16 @@
-﻿using Foster.Framework;
+﻿using DotNext;
+using Foster.Framework;
 
 namespace Pine.Core.Managers;
+
+
+public enum ResourceManagerGetErrorCode
+{
+    Success = 0,
+    ResourceNotExistInTheResourceManager,
+    NameIsNull,
+    InvalidResourceType
+}
 
 /// <summary>
 /// The manager for resources.
@@ -12,9 +22,7 @@ public sealed class ResourceManager : IDisposable
     /// <summary>
     /// Get a resource
     /// </summary>
-    /// <exception cref="KeyNotFoundException">Thrown when the resource name is not found. </exception>
-    /// <exception cref="InvalidCastException">Thrown when you try to access the resource with by passing T type but the resource is not T type.</exception>
-    public T Get<T>(string name) where T : notnull
+    public Result<T, ResourceManagerGetErrorCode> Get<T>(string name) where T : notnull
     {
         object resource;
         T resourceTyped;
@@ -23,18 +31,22 @@ public sealed class ResourceManager : IDisposable
         {
             resource = resources[name];
         }
-        catch (Exception)
+        catch (KeyNotFoundException)
         {
-            throw new KeyNotFoundException($"Resource doesn't exist in this resource manager");
+            return new Result<T, ResourceManagerGetErrorCode>(ResourceManagerGetErrorCode.ResourceNotExistInTheResourceManager);
+        }
+        catch (ArgumentNullException)
+        {
+            return new Result<T, ResourceManagerGetErrorCode>(ResourceManagerGetErrorCode.NameIsNull);
         }
 
         try
         {
             resourceTyped = (T)resource;
         }
-        catch (Exception)
+        catch (InvalidCastException)
         {
-            throw new InvalidCastException($"Resource is not {typeof(T)}");
+            return new Result<T, ResourceManagerGetErrorCode>(ResourceManagerGetErrorCode.InvalidResourceType);
         }
 
         return resourceTyped;

@@ -1,4 +1,4 @@
-﻿using Foster.Framework;
+﻿using Pine.Core.Components;
 
 namespace Pine.Core.Interfaces;
 
@@ -7,5 +7,5 @@ namespace Pine.Core.Interfaces;
 /// </summary>
 public interface IRenderable
 {
-    public void Render(App app, Batcher batcher);
+    public void Render(PineApplication pineApplication);
 }

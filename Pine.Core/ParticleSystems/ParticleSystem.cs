@@ -1,7 +1,7 @@
-﻿using Foster.Framework;
-using System.Numerics;
-using Timer = Pine.Core.Components.Timer;
+﻿using System.Numerics;
+using Timer = Pine.Core.DataStructures.Timer;
 using Pine.Core.Interfaces;
+using Pine.Core.Components;
 
 namespace Pine.Core.ParticleSystems;
 
@@ -36,13 +36,13 @@ public class ParticleSystem : IUpdateable, IRenderable
         particles.Add(particle);
     }
 
-    public void Update(App app)
+    public void Update(PineApplication pineApplication)
     {
-        SpawnTimer.Update(app);
+        SpawnTimer.Update(pineApplication);
 
         for (int i = particles.Count - 1; i >= 0; i--)
         {
-            particles[i].Update(app);
+            particles[i].Update(pineApplication);
 
             if (particles[i].IsTimeout)
             {
@@ -51,21 +51,21 @@ public class ParticleSystem : IUpdateable, IRenderable
         }
     }
 
-    public void Render(App app, Batcher batcher)
+    public void Render(PineApplication pineApplication)
     {
         if (Relative)
         {
-            batcher.PushMatrix(Position);
+            pineApplication.Batcher.PushMatrix(Position);
         }
 
         foreach (var particle in particles)
         {
-            particle.Render(app, batcher);
+            particle.Render(pineApplication);
         }
 
         if (Relative)
         {
-            batcher.PopMatrix();
+            pineApplication.Batcher.PopMatrix();
         }
     }
 }

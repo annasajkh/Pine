@@ -1,7 +1,7 @@
-﻿using Foster.Framework;
-using System.Numerics;
-using Timer = Pine.Core.Components.Timer;
+﻿using System.Numerics;
+using Timer = Pine.Core.DataStructures.Timer;
 using Pine.Core.Interfaces;
+using Pine.Core.Components;
 
 namespace Pine.Core.ParticleSystems;
 
@@ -45,10 +45,10 @@ public abstract class Particle : IUpdateable, IRenderable
         lifetimeTimer.Start();
     }
 
-    public virtual void Update(App app)
+    public virtual void Update(PineApplication pineApplication)
     {
-        lifetimeTimer.Update(app);
+        lifetimeTimer.Update(pineApplication);
     }
 
-    public abstract void Render(App app, Batcher batcher);
+    public abstract void Render(PineApplication pineApplication);
 }

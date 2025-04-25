@@ -1,4 +1,4 @@
-﻿using Foster.Framework;
+﻿using Pine.Core.Components;
 
 namespace Pine.Core.Interfaces;
 
@@ -7,5 +7,5 @@ namespace Pine.Core.Interfaces;
 /// </summary>
 public interface IUpdateable
 {
-    public void Update(App app);
+    public void Update(PineApplication pineApplication);
 }

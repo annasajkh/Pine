@@ -5,13 +5,13 @@ namespace Pine.Core.Managers;
 
 public sealed class SceneManager
 {
-    private App app;
+    private PineApplication pineApplication;
     private Scene? activeScene;
     private readonly Dictionary<string, Func<Scene>> sceneLambdas = new();
 
-    public SceneManager(App app)
+    public SceneManager(PineApplication pineApplication)
     {
-        this.app = app;
+        this.pineApplication = pineApplication;
     }
     
     /// <summary>
@@ -60,9 +60,9 @@ public sealed class SceneManager
             throw new KeyNotFoundException($"Scene with the name '{name}' does not exist.");
         }
 
-        activeScene?.ShutdownInternal(app);
+        activeScene?.ShutdownInternal(pineApplication);
         activeScene = sceneLambda();
-        activeScene.StartupInternal(app);
+        activeScene.StartupInternal(pineApplication);
     }
     
     /// <summary>
@@ -70,7 +70,7 @@ public sealed class SceneManager
     /// </summary>
     public void Update()
     {
-        activeScene?.Update(app);
+        activeScene?.Update(pineApplication);
     }
     
     /// <summary>
@@ -81,11 +81,11 @@ public sealed class SceneManager
     {
         if (activeScene is not null)
         {
-            app.Window.Clear(activeScene.ClearColor);
+            pineApplication.Window.Clear(activeScene.ClearColor);
         
-            activeScene.Render(app, batcher);
+            activeScene.Render(pineApplication);
         
-            batcher.Render(app.Window);
+            batcher.Render(pineApplication.Window);
             batcher.Clear();   
         }
     }

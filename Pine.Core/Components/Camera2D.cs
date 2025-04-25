@@ -1,7 +1,14 @@
-﻿using Foster.Framework;
+﻿using DotNext;
+using Foster.Framework;
 using System.Numerics;
 
 namespace Pine.Core.Components;
+
+public enum Camera2DErrorCode
+{
+    Success = 0,
+    CannotConvert,
+}
 
 public sealed class Camera2D
 {
@@ -80,13 +87,13 @@ public sealed class Camera2D
     ///  Project screen space to world space of this camera.
     /// </summary>
     /// <param name="spacePosition">The screen space position.</param>
-    public Vector2 ToWorldSpace(Vector2 spacePosition)
+    public Result<Vector2, Camera2DErrorCode> ToWorldSpace(Vector2 spacePosition)
     {
         Matrix3x2 invertedMatrix;
 
         if (!Matrix3x2.Invert(ViewMatrix, out invertedMatrix))
         {
-            throw new Exception("Cannot convert screen space to world space, The camera view matrix is not invertible");    
+            return new Result<Vector2, Camera2DErrorCode>(Camera2DErrorCode.CannotConvert);
         }
         
         return Vector2.Transform(spacePosition, invertedMatrix);

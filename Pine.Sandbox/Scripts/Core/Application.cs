@@ -1,24 +1,21 @@
 ﻿using Foster.Framework;
 using Pine.Sandbox.Scripts.Core.Scenes;
 using Pine.Core.Managers;
+using Pine.Core.Components;
 
 namespace PineSandbox.Scripts.Core;
 
-public class Application : App
+public class Application : PineApplication
 {
-    public SceneManager SceneManager { get; }
-    public Batcher Batcher { get; } 
 
     public Application(string name, int width, int height, GraphicsDriver preferredGraphicsDriver) : base(new AppConfig(name, name, width, height, PreferredGraphicsDriver: preferredGraphicsDriver))
     {
-        Batcher = new(GraphicsDevice);
-        SceneManager = new SceneManager(this);
+
     }
 
     protected override void Startup()
     {
         SceneManager.AddScene<TestParticle>("TestParticle");
-
         SceneManager.SetActive("TestParticle");
     }
 

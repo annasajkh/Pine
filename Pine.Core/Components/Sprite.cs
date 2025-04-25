@@ -44,7 +44,7 @@ public sealed class Sprite : IRenderable
     /// <summary>
     /// The frame index of the sprite.
     /// </summary>
-    public uint FrameIndex { get; set; } = 0;
+    public uint FrameIndex { get; private set; } = 0;
 
     /// <summary>
     /// toggle sprite is flip on the x axis.
@@ -130,20 +130,30 @@ public sealed class Sprite : IRenderable
     /// </summary>
     /// <param name="spriteBatch"></param>
     /// <exception cref="IndexOutOfRangeException"></exception>
-    public void Render(App app, Batcher batcher)
+    public void Render(PineApplication pineApplication)
     {
-        if (FrameIndex > FrameCount - 1)
-        {
-            throw new IndexOutOfRangeException();
-        }
-
         sourceRect.X = (int)(sourceRect.Width * (FrameIndex % Columns));
         sourceRect.Y = (int)(sourceRect.Height * (FrameIndex / Columns));
 
         Subtexture subtexture = new Subtexture(Texture, sourceRect);
 
-        batcher.PushMatrix(Position, Scale, Origin, Rotation);
-        batcher.ImageFit(subtexture, new Rect(0, 0, subtexture.Width, subtexture.Height), new Vector2(BoundingBox.Width, BoundingBox.Height), Color, FlipX, FlipY);
-        batcher.PopMatrix();
-    } 
+        pineApplication.Batcher.PushMatrix(Position, Scale, Origin, Rotation);
+        pineApplication.Batcher.ImageFit(subtexture, new Rect(0, 0, subtexture.Width, subtexture.Height), new Vector2(BoundingBox.Width, BoundingBox.Height), Color, FlipX, FlipY);
+        pineApplication.Batcher.PopMatrix();
+    }
+
+    /// <summary>
+    /// Set the frame index
+    /// </summary>
+    /// <param name="index">The frame index</param>
+    /// <exception cref="IndexOutOfRangeException">Trigger when sprite frame is out of range</exception>
+    public void SetFrameIndex(uint index)
+    {
+        if (FrameIndex > FrameCount - 1)
+        {
+            throw new IndexOutOfRangeException("Sprite frame is out of range");
+        }
+
+        FrameIndex = index;
+    }
 }

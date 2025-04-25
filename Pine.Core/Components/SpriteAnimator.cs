@@ -1,5 +1,4 @@
-﻿using Foster.Framework;
-using Pine.Core.Interfaces;
+﻿using Pine.Core.Interfaces;
 
 namespace Pine.Core.Components;
 
@@ -73,7 +72,7 @@ public sealed class SpriteAnimator : IUpdateable
     /// <summary>
     /// Update the animation so that it animate duh.
     /// </summary>
-    public void Update(App app)
+    public void Update(PineApplication pineApplication)
     {
         // Update to the next frame
         if (Playing && singleFrameElapsed >= 1f / FramePerSecond)
@@ -83,7 +82,7 @@ public sealed class SpriteAnimator : IUpdateable
             singleFrameElapsed = 0;
         }
 
-        singleFrameElapsed += app.Time.Delta;
+        singleFrameElapsed += pineApplication.Time.Delta;
 
         // Out of bounds handling and looping
         if (FrameIndex < 0)
@@ -109,6 +108,6 @@ public sealed class SpriteAnimator : IUpdateable
             }
         }
 
-        Sprite.FrameIndex = FrameIndices[FrameIndex];
+        Sprite.SetFrameIndex(FrameIndices[FrameIndex]);
     }
 }

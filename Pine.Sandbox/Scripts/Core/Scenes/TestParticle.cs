@@ -10,11 +10,11 @@ public class TestParticle : Scene
 {
     ParticleSystem particleSystem;
 
-    public override void Startup(App app)
+    public override void Startup(PineApplication pineApplication)
     {
         ClearColor = Color.Black;
 
-        particleSystem = new ParticleSystem(position: app.Input.Mouse.Position, oneshot: false, relative: false, spawnDelay: 0.001f);
+        particleSystem = new ParticleSystem(position: pineApplication.Input.Mouse.Position, oneshot: false, relative: false, spawnDelay: 0.001f);
 
         particleSystem.SpawnTimer.OnTimeout += () =>
         {
@@ -23,19 +23,19 @@ public class TestParticle : Scene
 
     }
 
-    public override void Update(App app)
+    public override void Update(PineApplication pineApplication)
     {
-        particleSystem.Position = app.Input.Mouse.Position;
+        particleSystem.Position = pineApplication.Input.Mouse.Position;
 
-        particleSystem.Update(app);
+        particleSystem.Update(pineApplication);
     }
 
-    public override void Render(App app, Batcher batcher)
+    public override void Render(PineApplication pineApplication)
     {
-        particleSystem.Render(app, batcher);
+        particleSystem.Render(pineApplication);
     }
 
-    public override void Shutdown(App app)
+    public override void Shutdown(PineApplication pineApplication)
     {
 
     }
